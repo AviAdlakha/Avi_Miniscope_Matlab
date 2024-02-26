@@ -1,0 +1,15 @@
+function [outputArg1,outputArg2] = T2F(inputArg1,inputArg2)
+%It converts the timestamps to Frames using the miniscope data.
+%  Get the Frame number for the time stamps provided.
+for ie = 1:length(Timestamp_for_query)
+    
+    % Find the index of the closest value in Timestamps01.VarName2
+    [~, idx] = min(abs(Timestamps01.VarName2 - Timestamp_for_query(ie, 1)));
+    
+    % Get the corresponding value in column 1
+    MiniscopeFrame(ie, 1) = Timestamps01.VarName1(idx);
+end
+outputArg1 = inputArg1;
+outputArg2 = inputArg2;
+end
+
