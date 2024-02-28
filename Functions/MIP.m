@@ -1,4 +1,4 @@
-function MIP(Cohort,SelAnimals, vargin)
+function MIP(Cohort,SelAnimals,varargin)
 %MIP_SP Get Max Image Projection, either from raw image or the final
 %spatial footprint, for the given cohort and animal.
 %   put spORmp = 1 for raw images, otherwise anything
@@ -29,7 +29,7 @@ for a= SelAnimals
     figure
     imagesc(sum(MIP,3))
     title('Max Image Projection of:', (Animals{a}))
-    clearvars MIP
+    MIP=[];
 end
 end
 
