@@ -1,4 +1,4 @@
-function selectBoxGUI(matrix)
+function selectedIndices = SelectCells(matrix)
     % Create figure
     fig = figure('Name', 'Unit Selection', 'NumberTitle', 'off', 'Position', [100, 100, 400, 300]);
 
@@ -10,6 +10,9 @@ function selectBoxGUI(matrix)
 
     % Create button
     btn = uicontrol('Style', 'pushbutton', 'String', 'Select Box', 'Position', [150, 10, 100, 30], 'Callback', @selectBox);
+
+    % Initialize selectedIndices
+    selectedIndices = [];
 
     % Callback function
     function selectBox(~, ~)
@@ -29,5 +32,11 @@ function selectBoxGUI(matrix)
         % Export the selectedIndices variable to the workspace
         assignin('base', 'selectedIndices', selectedIndices);
         disp('Selected indices exported to the workspace.');
+
+        % Close the figure and resume execution
+        close(fig);
     end
+
+    % Wait for the user to finish selecting indices before returning
+    uiwait(fig);
 end
